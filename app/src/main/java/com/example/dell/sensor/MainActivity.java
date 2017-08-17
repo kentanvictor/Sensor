@@ -1,6 +1,5 @@
 package com.example.dell.sensor;
 
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         sensor = (ImageView) this.findViewById(R.id.img);
         tv = (TextView) this.findViewById(R.id.tv);
         sensor.setKeepScreenOn(true);
-        manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //获取SensorManager
         manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         listener = new SensorListener();
