@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        magneticSensor =  manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        magneticSensor = manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         accelerometerSensor = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        manager.registerListener(listener,magneticSensor,SensorManager.SENSOR_DELAY_GAME);
+        manager.registerListener(listener, magneticSensor, SensorManager.SENSOR_DELAY_GAME);
         super.onResume();
     }
 
@@ -40,13 +40,14 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    private final class SensorListener implements SensorEventListener{
+    private final class SensorListener implements SensorEventListener {
         private float predegree = 0;
+        private float gravity = 0;
         @Override
         public void onSensorChanged(SensorEvent event) {
-            float degree =  event.values[0];//存放了方向值
-            RotateAnimation animation = new RotateAnimation(predegree,-degree,
-                    Animation.RELATIVE_TO_SELF, 0.5f,Animation.RELATIVE_TO_SELF, 0.5f);
+            float degree = event.values[0];//存放了方向值
+            RotateAnimation animation = new RotateAnimation(predegree, -degree,
+                    Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
             animation.setDuration(200);
             sensor.startAnimation(animation);
             predegree = -degree;
